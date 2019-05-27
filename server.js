@@ -14,14 +14,22 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-// DB Config
-const db = require('./config/keys').mongoURI
+// // DB Config
+// const db = require('./config/keys').mongoURI
 
-// Connect to MongoDB
-mongoose
-  .connect(db, { useNewUrlParser: true })
-  .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log(err))
+// // Connect to MongoDB
+// mongoose
+//   .connect(db, { useNewUrlParser: true })
+//   .then(() => console.log('MongoDB Connected'))
+//   .catch(err => console.log(err))
+
+//Live
+mongoose.connect(
+  'mongodb+srv://ata:ata@cluster0test-e4kkb.mongodb.net/steembackend?retryWrites=true',
+  {
+    useNewUrlParser: true
+  }
+)
 
 // Passport middleware
 app.use(passport.initialize())
