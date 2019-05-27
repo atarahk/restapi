@@ -4,7 +4,6 @@
   "description": "Rest API",
   "main": "server.js",
   "scripts": {
-    "client-install": "npm install --prefix client",
     "server": "node server.js",
     "client": "npm start --prefix client",
     "start": "concurrently \"npm run server\" \"npm run client\"",
@@ -25,5 +24,20 @@
   },
   "devDependencies": {
     "nodemon": "^1.17.3"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
