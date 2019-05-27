@@ -1,6 +1,9 @@
 ## Quick Start
 
 ```bash
+# go into the app folder
+cd restapi
+
 # Install dependencies for server
 npm install
 
