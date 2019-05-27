@@ -38,4 +38,7 @@ Account 3:
 Username: puo32526@cndps.com
 Password: puo32526@cndps.com
 
+## Preview
+<img src="https://github.com/atarahk/restapi/blob/master/client/src/img/a.png?raw=true" alt="preview" width="700">
+<img src="https://github.com/atarahk/restapi/blob/master/client/src/img/b.png?raw=true" alt="preview" width="700">
 
