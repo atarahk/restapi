@@ -19,15 +19,7 @@ npm run client
 # Server runs on http://localhost:5000 and client on http://localhost:3000
 ```
 
-You will need to create a keys_dev.js in the server config folder with
 Demo usage MongoURI is temporary, will expiry soon
-
-```
-module.exports = {
-  mongoURI: 'YOUR_OWN_MONGO_URI',
-  secretOrKey: 'YOUR_OWN_SECRET'
-};
-```
 
 ## Testing Account
 
