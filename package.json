@@ -4,7 +4,7 @@
   "description": "Rest API",
   "main": "server.js",
   "scripts": {
-    "server": "nodemon server.js",
+    "server": "node server.js",
     "client": "npm start --prefix client",
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
