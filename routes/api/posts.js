@@ -16,33 +16,6 @@ const validatePostInput = require('../../validation/post')
 // @access  Public
 router.get('/test', (req, res) => res.json({ msg: 'Posts Works' }))
 
-// @route   GET api/posts
-// @desc    Get posts
-// @access  Public
-router.get('/', (req, res) => {
-  Post.find()
-    .sort({ date: -1 })
-    .then(posts => res.json(posts))
-    .catch(err => res.status(404).json({ nopostsfound: 'No posts found' }))
-})
-
-// @route   GET api/posts/:id
-// @desc    Get post by id
-// @access  Public
-router.get('/:id', (req, res) => {
-  Post.findById(req.params.id)
-    .then(post => {
-      if (post) {
-        res.json(post)
-      } else {
-        res.status(404).json({ nopostfound: 'No post found with that ID' })
-      }
-    })
-    .catch(err =>
-      res.status(404).json({ nopostfound: 'No post found with that ID' })
-    )
-})
-
 // @route   POST api/posts
 // @desc    Create post
 // @access  Private
@@ -68,6 +41,53 @@ router.post(
     newPost.save().then(post => res.json(post))
   }
 )
+
+// @route   POST api/posts
+// @desc    Create post
+// @access  Private
+// router.put(
+
+//5ceb2482463df44d48c7378d
+router.get('/edit/:id', (req, res) => {
+  // res.json({ msg: 'Posts Works', req: req.params.id })
+
+  // Post.findById({ _id: req.params.id })
+  Post.findById(req.params.id)
+    .then(post => {
+      if (post) {
+        res.json(post)
+      } else {
+        res.status(404).json({ nopostfound: 'No post found with that ID' })
+      }
+    })
+    .catch(err =>
+      res.status(404).json({ nopostfound: 'No post found with that ID' })
+    )
+})
+
+router.patch('/edit/:id', (req, res) => {
+  console.log('req.body => ', req.body)
+  console.log('req.params.id => ', req.params.id)
+  Post.updateOne(
+    { _id: req.params.id },
+    {
+      $set: {
+        text: req.body.text,
+        name: req.body.user.name,
+        user: req.body.user.id,
+        avatar: req.body.user.avatar
+      }
+    },
+    { overwrite: true },
+    function(err, foundPost) {
+      if (foundPost) {
+        res.json(foundPost)
+      } else {
+        res.send(err)
+      }
+    }
+  )
+})
 
 // @route   DELETE api/posts/:id
 // @desc    Delete post
@@ -160,5 +180,32 @@ router.delete(
       .catch(err => res.status(404).json({ postnotfound: 'No post found' }))
   }
 )
+
+// @route   GET api/posts
+// @desc    Get posts
+// @access  Public
+router.get('/', (req, res) => {
+  Post.find()
+    .sort({ date: -1 })
+    .then(posts => res.json(posts))
+    .catch(err => res.status(404).json({ nopostsfound: 'No posts found' }))
+})
+
+// @route   GET api/posts/:id
+// @desc    Get post by id
+// @access  Public
+router.get('/:id', (req, res) => {
+  Post.findById(req.params.id)
+    .then(post => {
+      if (post) {
+        res.json(post)
+      } else {
+        res.status(404).json({ nopostfound: 'No post found with that ID' })
+      }
+    })
+    .catch(err =>
+      res.status(404).json({ nopostfound: 'No post found with that ID' })
+    )
+})
 
 module.exports = router

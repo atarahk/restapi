@@ -1,4 +1,5 @@
 import axios from 'axios'
+import history from '../history'
 
 import {
   ADD_POST,
@@ -35,20 +36,24 @@ export const addPost = postData => dispatch => {
 }
 
 // Eidt Post
-export const editPost = (id, postData) => dispatch => {
+export const editPost = postData => dispatch => {
+  console.log('postData => ', postData)
+  const id = postData.id
   dispatch(clearErrors())
   axios
-    .post(`/api/posts/${id}`, {
+    .patch(`/api/posts/edit/${id}`, {
       text: postData.text,
       name: postData.name,
+      user: postData.user,
       avatar: postData.avatar
     })
-    .then(res =>
+    .then(res => {
       dispatch({
         type: EDIT_POST,
         payload: res.data
       })
-    )
+      history.push('/feed')
+    })
     .catch(err =>
       dispatch({
         type: GET_ERRORS,

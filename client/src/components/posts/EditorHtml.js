@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
-
 import { connect } from 'react-redux'
 import { addPost } from '../../actions/postActions'
 import PropTypes from 'prop-types'
@@ -36,6 +35,7 @@ class EditorHtml extends Component {
 
   handleChange = html => {
     this.setState({ editorHtml: html })
+    console.log('HTML => ', html)
   }
 
   render() {
@@ -61,6 +61,11 @@ class EditorHtml extends Component {
     )
   }
 }
+// function imageHandler() {
+//   var range = this.quill.getSelection();
+//   var value = prompt('What is the image URL');
+//   this.quill.insertEmbed(range.index, 'image', value, Quill.sources.USER);
+// }
 
 /*
  * Quill modules to attach to editor
@@ -78,7 +83,8 @@ EditorHtml.modules = {
       { indent: '-1' },
       { indent: '+1' }
     ],
-    ['link', 'video'],
+    ['link', 'image', 'video'],
+
     ['clean']
   ],
   clipboard: {
@@ -109,13 +115,14 @@ EditorHtml.formats = [
   'link',
   'video',
   'color',
+  'image',
   'background'
 ]
 
 EditorHtml.propTypes = {
   addPost: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.string.isRequired
 }
 
 const mapStateToProps = state => ({

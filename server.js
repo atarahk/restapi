@@ -12,7 +12,7 @@ const app = express()
 
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+app.use(bodyParser.json({ limit: '10mb' }))
 
 // // DB Config
 // const db = require('./config/keys').mongoURI
@@ -25,7 +25,7 @@ app.use(bodyParser.json())
 
 //Live
 mongoose.connect(
-  'mongodb+srv://ata:ata@cluster0test-e4kkb.mongodb.net/steembackend?retryWrites=true',
+  'mongodb+srv://ata:ata@midmaytestgooglecloud-byzgf.gcp.mongodb.net/test?retryWrites=true',
   {
     useNewUrlParser: true
   }
