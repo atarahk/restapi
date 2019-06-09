@@ -4,7 +4,8 @@ import {
   GET_POSTS,
   GET_POST,
   DELETE_POST,
-  POST_LOADING
+  POST_LOADING,
+  EDIT_POST_SUCCESS
 } from '../actions/types'
 
 const initialState = {
@@ -38,6 +39,11 @@ export default function(state = initialState, action) {
         posts: [action.payload, ...state.posts]
       }
     case EDIT_POST:
+      return {
+        ...state,
+        posts: [action.payload, ...state.posts]
+      }
+    case EDIT_POST_SUCCESS:
       return {
         ...state,
         posts: [action.payload, ...state.posts]

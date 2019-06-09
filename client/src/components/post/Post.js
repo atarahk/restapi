@@ -39,6 +39,13 @@ class Post extends Component {
               <Link to="/feed" className="btn btn-light mb-3">
                 Back To Feed
               </Link>
+              <Link
+                style={{ marginLeft: 20 }}
+                className="btn btn-light mb-3"
+                to={`/edit/${this.props.match.params.id}`}
+              >
+                Edit The Post
+              </Link>
               {postContent}
             </div>
           </div>

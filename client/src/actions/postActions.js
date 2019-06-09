@@ -1,5 +1,4 @@
 import axios from 'axios'
-import history from '../history'
 
 import {
   ADD_POST,
@@ -36,23 +35,23 @@ export const addPost = postData => dispatch => {
 }
 
 // Eidt Post
-export const editPost = postData => dispatch => {
-  console.log('postData => ', postData)
-  const id = postData.id
-  dispatch(clearErrors())
-  axios
+export const editPost = (newPost, callback) => async dispatch => {
+  console.log('newPost => ', newPost)
+  const id = newPost.id
+  // dispatch(clearErrors())
+  await axios
     .patch(`/api/posts/edit/${id}`, {
-      text: postData.text,
-      name: postData.name,
-      user: postData.user,
-      avatar: postData.avatar
+      text: newPost.text,
+      name: newPost.name,
+      user: newPost.user,
+      avatar: newPost.avatar
     })
     .then(res => {
       dispatch({
         type: EDIT_POST,
         payload: res.data
       })
-      history.push('/feed')
+      callback()
     })
     .catch(err =>
       dispatch({
@@ -63,9 +62,9 @@ export const editPost = postData => dispatch => {
 }
 
 // Get Posts
-export const getPosts = () => dispatch => {
+export const getPosts = () => async dispatch => {
   dispatch(setPostLoading())
-  axios
+  await axios
     .get('/api/posts')
     .then(res =>
       dispatch({
@@ -82,9 +81,9 @@ export const getPosts = () => dispatch => {
 }
 
 // Get Post
-export const getPost = id => dispatch => {
+export const getPost = id => async dispatch => {
   dispatch(setPostLoading())
-  axios
+  await axios
     .get(`/api/posts/${id}`)
     .then(res =>
       dispatch({

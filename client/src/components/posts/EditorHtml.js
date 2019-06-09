@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 class EditorHtml extends Component {
   constructor(props) {
     super(props)
-    this.state = { editorHtml: '', text: '', theme: 'snow', errors: {} }
+    this.state = { editorHtml: '', text: '', theme: 'snow' }
   }
 
   componentWillReceiveProps(newProps) {
@@ -94,7 +94,8 @@ EditorHtml.modules = {
 }
 
 EditorHtml.propTypes = {
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
+  errors: PropTypes.string.isRequired
 }
 /*
  * Quill editor formats
@@ -121,8 +122,8 @@ EditorHtml.formats = [
 
 EditorHtml.propTypes = {
   addPost: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
-  errors: PropTypes.string.isRequired
+  auth: PropTypes.object.isRequired
+  // errors: PropTypes.string.isRequired
 }
 
 const mapStateToProps = state => ({

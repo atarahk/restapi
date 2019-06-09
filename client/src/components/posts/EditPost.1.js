@@ -80,15 +80,6 @@ class EditPost extends Component {
   }
 
   render() {
-    // console.log(this.props.post.post.text)
-
-    // console.log('certainID => ', this.props)
-    // const aaa = String(this.props.post.post.text)
-
-    // console.log('aaa => ', aaa)
-    // const bbb = aaa.replace(/"/g, '')
-    // console.log('bbb => ', bbb)
-    // console.log('this.state => ', this.state)
     return (
       <div>
         <form onSubmit={this.onFormSubmit}>

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import renderHTML from 'react-render-html'
+// import renderHTML from 'react-render-html'
 import { deletePost } from '../../actions/postActions'
 
 class PostItem extends Component {
@@ -25,14 +25,12 @@ class PostItem extends Component {
             <p className="text-center">{post.name}</p>
           </div>
           <div className="col-md-10">
-            {renderHTML(post.text)}
+            {/* {renderHTML(post.text)} */}
+            <p dangerouslySetInnerHTML={{ __html: post.text }} />
             {showActions ? (
               <span>
                 <Link to={`/post/${post._id}`} className="btn btn-info mr-1">
                   View Details and Comments
-                </Link>
-                <Link to={`/edit/${post._id}`} className="btn btn-info mr-1">
-                  Edit
                 </Link>
                 {post.user === auth.user.id ? (
                   <div>
@@ -64,9 +62,15 @@ PostItem.propTypes = {
   auth: PropTypes.object.isRequired
 }
 
-const mapStateToProps = state => ({
-  auth: state.auth
-})
+// const mapStateToProps = state => ({
+//   auth: state.auth
+// })
+const mapStateToProps = state => {
+  // console.log('POSTITEM => ', state)
+  return {
+    auth: state.auth
+  }
+}
 
 export default connect(
   mapStateToProps,
