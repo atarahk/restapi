@@ -1,6 +1,9 @@
 ## Quick Start
 
 ```bash
+# go into the app folder
+cd restapi
+
 # Install dependencies for server
 npm install
 
@@ -19,15 +22,7 @@ npm run client
 # Server runs on http://localhost:5000 and client on http://localhost:3000
 ```
 
-You will need to create a keys_dev.js in the server config folder with
 Demo usage MongoURI is temporary, will expiry soon
-
-```
-module.exports = {
-  mongoURI: 'YOUR_OWN_MONGO_URI',
-  secretOrKey: 'YOUR_OWN_SECRET'
-};
-```
 
 ## Testing Account
 
@@ -42,3 +37,8 @@ Password: qmh45961@cndps.com
 Account 3:
 Username: puo32526@cndps.com
 Password: puo32526@cndps.com
+
+## Preview
+<img src="https://github.com/atarahk/restapi/blob/master/client/src/img/a.png?raw=true" alt="preview" width="700">
+<img src="https://github.com/atarahk/restapi/blob/master/client/src/img/b.png?raw=true" alt="preview" width="700">
+
